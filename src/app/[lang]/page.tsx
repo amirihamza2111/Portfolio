@@ -1,6 +1,7 @@
 import { getDictionary, getLocale } from "@/content/i18n";
 import { SiteHeader } from "@/components/site-header";
 import { Hero } from "@/components/hero";
+import { Quote } from "@/components/quote";
 import { Projects } from "@/components/projects";
 import { VideoWork } from "@/components/video-work";
 import { Stack } from "@/components/stack";
@@ -23,6 +24,7 @@ export default async function Home() {
       <SiteHeader dict={dict} locale={locale} />
       <main id="main">
         <Hero dict={dict} locale={locale} />
+        <Quote dict={dict} />
         <Projects dict={dict} />
         <VideoWork dict={dict} />
         <Stack dict={dict} />

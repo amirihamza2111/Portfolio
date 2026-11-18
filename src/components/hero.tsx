@@ -1,35 +1,19 @@
 import Image from "next/image";
-import { ArrowDown, Download, Layers, Sparkles, Trophy } from "lucide-react";
+import { ArrowDown, Download, Sparkles, Trophy } from "lucide-react";
 import type { Dictionary } from "@/content/types";
 import type { Locale } from "@/content/i18n";
 import { site } from "@/content/site";
-import { NeuralNetwork } from "./neural-network";
 import { Parallax } from "./motion";
 
 export function Hero({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   const { hero } = dict;
   return (
     <section id="top" aria-labelledby="hero-title" className="relative overflow-hidden">
-      <div
-        aria-hidden
-        className="grid-texture pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_72%_40%,#000_10%,transparent_65%)]"
-      />
-      {/* green neurons: strongest behind the portrait, faint behind the text */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,#000_70%,transparent),linear-gradient(to_right,rgba(0,0,0,0.3),#000_60%)] [mask-composite:intersect]"
-      >
-        <NeuralNetwork />
-      </div>
       <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-4 pb-20 pt-12 sm:px-6 md:pt-20 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10 lg:pb-28">
         <div>
-          <p className="ha-rise inline-flex items-center gap-2 rounded-full border border-jungle-200 bg-jungle-50 px-3 py-1.5 font-mono text-xs text-jungle-700">
-            {hero.eyebrow}
-          </p>
-
           <h1
             id="hero-title"
-            className="ha-rise mt-6 font-display text-[clamp(2.4rem,5.6vw,4.2rem)] font-bold leading-[1.04] tracking-[-0.025em] text-ink [--d:50ms]"
+            className="ha-rise font-display text-[clamp(2.4rem,5.6vw,4.2rem)] font-bold leading-[1.04] tracking-[-0.025em] text-ink [--d:50ms]"
           >
             {hero.titleStart}{" "}
             <span className="relative inline-block text-jungle-600">
@@ -116,9 +100,6 @@ function Portrait({ alt, chips }: { alt: string; chips: Dictionary["hero"]["chip
       </FloatChip>
       <FloatChip className="-right-2 top-[44%] sm:-right-10" delay={0.8}>
         <Sparkles size={17} className="text-jungle-600" aria-hidden /> {chips.ai}
-      </FloatChip>
-      <FloatChip className="-bottom-4 left-4 sm:-left-8" delay={1.6}>
-        <Layers size={17} className="text-jungle-600" aria-hidden /> {chips.fullstack}
       </FloatChip>
     </div>
   );

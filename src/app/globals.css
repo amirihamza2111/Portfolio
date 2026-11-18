@@ -137,8 +137,12 @@ h3 {
   animation: ha-draw 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
 }
 
+/* Typing caret after "line of code" in the quote. */
+@keyframes ha-blink { 50% { opacity: 0; } }
+.ha-caret { animation: ha-blink 1.1s steps(1) infinite; }
+
 @media (prefers-reduced-motion: reduce) {
-  .ha-rise, .ha-pop, .ha-chip, .ha-scanline, .ha-ping, .ha-draw { animation: none; }
+  .ha-rise, .ha-pop, .ha-chip, .ha-scanline, .ha-ping, .ha-draw, .ha-caret { animation: none; }
   .ha-scanline { display: none; }
 }
 

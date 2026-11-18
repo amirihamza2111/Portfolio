@@ -9,8 +9,8 @@ export const en: Dictionary = {
   },
   nav: {
     label: "Main navigation",
-    home: "Hamza Amiri, Full Stack Developer, back to top",
-    brand: "Full Stack Developer",
+    home: "Hamza Amiri, back to top",
+    brand: "Hamza Amiri",
     projects: "Projects",
     video: "Video",
     stack: "Stack",
@@ -23,14 +23,18 @@ export const en: Dictionary = {
     switchLabel: "Lire en français",
   },
   hero: {
-    eyebrow: "Full-stack developer · AI",
     titleStart: "Web apps built end to end, with",
     titleAccent: "AI where it counts.",
     lede: "I’m Hamza Amiri, a software engineering student in Tunisia. I design, build, test and ship complete products, from the database rules to the last pixel. And I make films with AI.",
     primary: "See my work",
     secondary: "Download CV",
-    photoAlt: "Portrait of Hamza Amiri, smiling, in a black shirt and round glasses",
-    chips: { award: "1st place · AI Film", ai: "RAG · LLM", fullstack: "Full-stack" },
+    photoAlt: "Hamza Amiri smiling, in a black suit, white shirt and black tie, with round glasses",
+    chips: { award: "1st place · AI Film", ai: "RAG · LLM" },
+  },
+  quote: {
+    start: "Between imagination and reality, there is a",
+    accent: "line of code",
+    end: "waiting to be written.",
   },
   projects: {
     eyebrow: "Projects",

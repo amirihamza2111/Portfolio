@@ -9,8 +9,8 @@ export const fr: Dictionary = {
   },
   nav: {
     label: "Navigation principale",
-    home: "Hamza Amiri, Développeur Full Stack, retour en haut",
-    brand: "Développeur Full Stack",
+    home: "Hamza Amiri, retour en haut",
+    brand: "Hamza Amiri",
     projects: "Projets",
     video: "Vidéo",
     stack: "Stack",
@@ -23,14 +23,18 @@ export const fr: Dictionary = {
     switchLabel: "Read in English",
   },
   hero: {
-    eyebrow: "Développeur full-stack · IA",
     titleStart: "Des applications web de bout en bout, avec",
     titleAccent: "l’IA là où elle compte.",
     lede: "Je suis Hamza Amiri, étudiant en génie logiciel en Tunisie. Je conçois, développe, teste et mets en ligne des produits complets, des règles de la base de données jusqu’au dernier pixel. Et je réalise des films avec l’IA.",
     primary: "Voir mes projets",
     secondary: "Télécharger le CV",
-    photoAlt: "Portrait de Hamza Amiri, souriant, en chemise noire et lunettes rondes",
-    chips: { award: "1re place · Film IA", ai: "RAG · LLM", fullstack: "Full-stack" },
+    photoAlt: "Hamza Amiri souriant, en costume noir, chemise blanche et cravate noire, avec des lunettes rondes",
+    chips: { award: "1re place · Film IA", ai: "RAG · LLM" },
+  },
+  quote: {
+    start: "Entre l’imagination et la réalité, il y a une",
+    accent: "ligne de code",
+    end: "qui attend d’être écrite.",
   },
   projects: {
     eyebrow: "Projets",

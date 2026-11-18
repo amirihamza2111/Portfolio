@@ -35,15 +35,16 @@ export type Dictionary = {
     switchLabel: string;
   };
   hero: {
-    eyebrow: string;
     titleStart: string;
     titleAccent: string;
     lede: string;
     primary: string;
     secondary: string;
     photoAlt: string;
-    chips: { award: string; ai: string; fullstack: string };
+    chips: { award: string; ai: string };
   };
+  /** Pull quote under the hero; `accent` is set in the code font. */
+  quote: { start: string; accent: string; end: string };
   projects: {
     eyebrow: string;
     title: string;

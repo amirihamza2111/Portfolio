@@ -9,7 +9,7 @@ export const site = {
   whatsapp: "https://wa.me/21658774234",
   github: "https://github.com/amirihamza2111",
   linkedin: "https://www.linkedin.com/in/hamza-amiri-1b84a7395/" as string | null,
-  photo: "/images/hamza.webp",
+  photo: "/images/hamza-headshot.webp",
   cv: { en: "/cv/cv-hamza-amiri-en.pdf", fr: "/cv/cv-hamza-amiri-fr.pdf" },
 } as const;
 
