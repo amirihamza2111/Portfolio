@@ -24,6 +24,6 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Skip Next internals and any file with an extension (images, videos, CVs…).
-  matcher: ["/((?!_next|.*\\..*).*)"],
+  // Only the bare domain needs a language choice; /en and /fr are served straight from the cache.
+  matcher: ["/"],
 };
