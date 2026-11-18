@@ -1,0 +1,13 @@
+node_modules
+.next
+out
+*.tsbuildinfo
+next-env.d.ts
+.env*
+.vercel
+
+# originals and source files kept locally (the web-ready copies live in public/)
+assets/
+
+# local tool settings
+.claude/

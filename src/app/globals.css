@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+/* Theme taken from NeroQR: white + jungle green.
+   jungle-900 is the ink; jungle-500 is the signature accent.
+   Never put white text on jungle-500/400 (contrast < 3:1): use jungle-950 text there. */
+@theme {
+  --color-jungle-950: #08190F;
+  --color-jungle-900: #0E2A1F;
+  --color-jungle-800: #123A2B;
+  --color-jungle-700: #175138;
+  --color-jungle-600: #1C6B4D;
+  --color-jungle-500: #29AB87;
+  --color-jungle-400: #4FC39F;
+  --color-jungle-300: #8FD9BF;
+  --color-jungle-200: #C2EBDC;
+  --color-jungle-100: #E1F4EC;
+  --color-jungle-50: #F2FAF6;
+
+  --color-ink: #0E2A1F;
+  --color-muted: #4D6158;
+  --color-line: #DCE8E2;
+  --color-surface: #FFFFFF;
+  --color-gold: #C98A12;
+
+  --font-display: var(--font-bricolage), "Segoe UI", system-ui, sans-serif;
+  --font-sans: var(--font-karla), "Segoe UI", system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, Consolas, monospace;
+
+  --radius-card: 1.25rem;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+a,
+button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Cards slide in from the side: clip <main> (not body, whose overflow passes to the page)
+   so nothing scrolls sideways; `clip` keeps working with position: sticky. */
+main {
+  overflow-x: clip;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+::selection {
+  background: var(--color-jungle-200);
+  color: var(--color-jungle-950);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-jungle-500);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Entrance: CSS (not JS) so text and photo are visible on first paint — keeps LCP fast. */
+@keyframes ha-rise {
+  from { opacity: 0; transform: translateY(14px); }
+}
+@keyframes ha-pop {
+  from { transform: scale(0.96); }
+}
+.ha-rise { animation: ha-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s) both; }
+.ha-pop { animation: ha-pop 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* Hero chips: fade in once, then float (transform/opacity only). */
+@keyframes ha-chip-in { from { opacity: 0; } }
+@keyframes ha-float { 50% { transform: translateY(-7px); } }
+.ha-chip {
+  animation:
+    ha-chip-in 0.4s ease-out var(--fade-d, 0s) both,
+    ha-float 4.5s ease-in-out var(--float-d, 0s) 4; /* stops after ~18 s */
+}
+
+/* Scanning ray over the portrait (NeroQR motion 41). */
+.ha-scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 2%;
+  height: 94%;
+  pointer-events: none;
+  /* a few sweeps on arrival, then it rests and fades out */
+  animation:
+    ha-scan 3.2s ease-in-out 3,
+    ha-fade 0.6s ease-out 9.6s forwards;
+  will-change: transform;
+}
+@keyframes ha-fade { to { opacity: 0; } }
+.ha-scanline::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-jungle-400);
+  box-shadow: 0 0 14px 3px color-mix(in srgb, var(--color-jungle-400) 55%, transparent);
+}
+@keyframes ha-scan { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(100%); } }
+
+/* Live status dot */
+@keyframes ha-ping { 75%, 100% { transform: scale(2.2); opacity: 0; } }
+.ha-ping { animation: ha-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite; }
+
+/* Underline under the hero accent: draws itself once. */
+@keyframes ha-draw { from { stroke-dashoffset: 1; } }
+.ha-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: ha-draw 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ha-rise, .ha-pop, .ha-chip, .ha-scanline, .ha-ping, .ha-draw { animation: none; }
+  .ha-scanline { display: none; }
+}
+
+/* Faint grid texture (the QR grid from NeroQR) */
+@utility grid-texture {
+  background-image:
+    linear-gradient(var(--grid-color, var(--color-jungle-100)) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color, var(--color-jungle-100)) 1px, transparent 1px);
+  background-size: var(--grid-size, 28px) var(--grid-size, 28px);
+}
+
+/* Certificate dialog */
+dialog.ha-dialog::backdrop {
+  background: color-mix(in srgb, var(--color-jungle-950) 80%, transparent);
+  backdrop-filter: blur(4px);
+}
+dialog.ha-dialog {
+  overscroll-behavior: contain;
+}
+dialog.ha-dialog[open] {
+  animation: ha-pop 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
